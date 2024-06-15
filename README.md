@@ -1,6 +1,6 @@
 # Tugas Besar : Teori Bahasa dan Automata
 
-## Kelompok:
+### Kelompok:
 - Baihaqi Bintang Bahana (1301223175)
 - Binta Adimastama (1301223005)
 - Putu Arjuna Nurgraha Eka Wana (1301223039)
