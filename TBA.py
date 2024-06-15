@@ -5,10 +5,10 @@ def tokenRecognizer(word: str):
         elif isPredikat(word): return 'P'
         elif isObjek(word): return 'O'
         elif isKeterangan(word): return 'K'
-        else: raise Exception("ERROR: Token Unrecognized")
+        else: raise Exception("TokenUnrecognizedError")
     except Exception as e: 
-        print(e)
-        print("Word: ", word)
+        print(f"ERROR: {e}")
+        print(f"Word {word} tidak masuk ke kategori token manapun")
         return '?'
 
 def isSubjek(word: str) -> bool:
@@ -152,8 +152,10 @@ def isKeterangan(word: str) -> bool:
     return currState == 7
 
 def parser(sentence):
+    ERR = Exception('ParsingError')
     words = sentence.split()
     words.append('')
+    res = []
     stack = []
     state = 0
     print(stack)
@@ -175,7 +177,7 @@ def parser(sentence):
                         stack.append('Y')
                         stack.append('P')
                         stack.append('S')
-                    else: raise Exception('ERROR: Parsing Error')
+                    else: raise ERR
                 case 'Y':
                     if word == '': stack.pop()
                     else:
@@ -186,46 +188,52 @@ def parser(sentence):
                         elif token == 'K':
                                 stack.pop('Y')
                                 stack.append('Z')
-                        else: raise Exception('ERROR: Parsing Error')
+                        else: raise ERR
                 case 'Z':
                     if word == '': stack.pop()
                     elif token == 'K':
                         stack.pop()
                         stack.append('K')
-                    else: raise Exception('ERROR: Parsing Error')
+                    else: raise ERR
                 case 'S':
                     if token == 'S':
-                        stack.pop()
+                        res.append(stack.pop())
                         stack.append(word)
-                    else: raise Exception('ERROR: Parsing Error')
+                    else: raise ERR
                 case 'P':
                     if token == 'P':
-                        stack.pop()
+                        res.append(stack.pop())
                         stack.append(word)
-                    else: raise Exception('ERROR: Parsing Error')
+                    else: raise ERR
                 case 'O':
                     if token == 'O':
-                        stack.pop()
+                        res.append(stack.pop())
                         stack.append(word)
-                    else: raise Exception('ERROR: Parsing Error')
+                    else: raise ERR
                 case 'K':
                     if token == 'K':
-                        stack.pop()
+                        res.append(stack.pop())
                         stack.append(word)
-                    else: raise Exception('ERROR: Parsing Error')
+                    else: raise ERR
                 case _:
                     if token != '?':
                         stack.pop()
                         i += 1
-                    else: raise Exception('ERROR: Parsing Error')
+                    else: raise ERR
         print(stack)
         stack.pop()
         print(stack)
+
+        for i in res[:-1]:
+            print(f"{i} - ", end='')
+        print(res[-1])
+        
         return True 
     except Exception as e:
-        print(e)
+        print(f"ERROR: {e}")
+        print(f"Kalimat {sentence} tidak memiliki struktur yang sesuai")
         return False
 
 if __name__ == '__main__':  
-    sentence = input()
-    print("String Diterima") if parser(sentence) else print("String Ditolak")
+    sentence = input("Kalimat: ")
+    print(f"String: {sentence}\nStatus: Diterima ✔️") if parser(sentence) else print(f"String: {sentence}\nStatus: Ditolak ❌")
