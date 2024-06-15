@@ -158,6 +158,7 @@ def parser(sentence):
     res = []
     stack = []
     state = 0
+    print("Stack:")
     print(stack)
     stack.append('#')
     state = 1
@@ -237,4 +238,5 @@ def parser(sentence):
 
 if __name__ == '__main__':  
     sentence = input("Kalimat: ")
-    print(f"String: {sentence}\nStatus: Diterima ✔️") if parser(sentence) else print(f"String: {sentence}\nStatus: Ditolak ❌")
+    print()
+    print(f"String: {sentence}\nStatus: Diterima ✔️\n") if parser(sentence) else print(f"String: {sentence}\nStatus: Ditolak ❌\n")
