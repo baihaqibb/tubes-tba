@@ -187,8 +187,8 @@ def parser(sentence):
                             stack.append('Z')
                             stack.append('O')
                         elif token == 'K':
-                                stack.pop('Y')
-                                stack.append('Z')
+                            stack.pop()
+                            stack.append('Z')
                         else: raise ERR
                 case 'Z':
                     if word == '': stack.pop()
