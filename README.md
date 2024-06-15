@@ -106,6 +106,14 @@ first(S) = {aku, andi, budi, dia, dian}
 first(P) = {membaca, membawa, membeli, menulis, menukar}
 first(O) = {buku, kamus, komik, koran, novel}
 first(K) = {di_sana, di_sini, di_kelas, di_taman, di_toko}
+
+follow(X) = {EOS}
+follow(Y) = {EOS}
+follow(Z) = {EOS}
+follow(S) = {membaca, membawa, membeli, menulis, menukar}
+follow(P) = {buku, kamus, komik, koran, novel, di_sana, di_sini, di_kelas, di_taman, di_toko, EOS}
+follow(O) = {di_sana, di_sini, di_kelas, di_taman, di_toko, EOS}
+follow(K) = {EOS}
 </pre>
 
 Dari first dan follow non-terminal diatas, kami hasilkan parse table seperti berikut: <br>
