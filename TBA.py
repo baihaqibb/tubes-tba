@@ -8,7 +8,7 @@ def tokenRecognizer(word: str):
         else: raise Exception("TokenUnrecognizedError")
     except Exception as e: 
         print(f"ERROR: {e}")
-        print(f"Word {word} tidak masuk ke kategori token manapun")
+        print(f"Word \"{word}\" tidak masuk ke kategori token manapun")
         return '?'
 
 def isSubjek(word: str) -> bool:
@@ -227,11 +227,11 @@ def parser(sentence):
         for i in res[:-1]:
             print(f"{i} - ", end='')
         print(res[-1])
-        
+
         return True 
     except Exception as e:
         print(f"ERROR: {e}")
-        print(f"Kalimat {sentence} tidak memiliki struktur yang sesuai")
+        print(f"Kalimat \"{sentence}\" tidak memiliki struktur yang sesuai")
         return False
 
 if __name__ == '__main__':  
