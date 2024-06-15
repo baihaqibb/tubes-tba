@@ -106,7 +106,7 @@ first(K) = {di_sana, di_sini, di_kelas, di_taman, di_toko}
 Dari first dan follow non-terminal diatas, kami hasilkan parse table seperti berikut: <br>
 ![image](https://github.com/baihaqibb/tubes-tba/assets/138758831/a4ea0fb7-d2a1-4d45-859f-423835b66653)
 
-### Code dan Hasil Running (v1.0.1)
+### Code dan Hasil Running (v1.0.2)
 
 Program dapat dijalankan sebagaimana mestinya menjalankan program python, yaitu dengan menjalankan command
 <pre>
