@@ -225,6 +225,8 @@ def parser(sentence):
         stack.pop()
         print(stack)
 
+        if len(stack) != 0: raise ERR
+
         print("Struktur: ", end='')
         for i in res[:-1]:
             print(f"{i} - ", end='')
